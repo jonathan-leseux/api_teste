@@ -19,6 +19,7 @@ import api_teste.ds.models.Task;
 import api_teste.ds.models.User;
 //importa a interface do repositorio responsavel pelas operaçoes no banco de dados
 import api_teste.ds.repositories.TaskRepository;
+
 import jakarta.persistence.Id;
 
 //anotaçao que indica para o Spring que essa classe contem as regras de negocio
