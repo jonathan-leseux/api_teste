@@ -4,7 +4,6 @@ package api_teste.ds.services;
 //importa optional, usado para tratar valores que podem nao estar presentes (evita NullExceptionPointer)
 import java.util.Optional;
 
-import org.apache.catalina.User;
 //importa a anotaçao do Spring para a injeçao automatica de dependencias
 import org.springframework.beans.factory.annotation.Autowired;
 //importa a anotação que define essa classe como um componente de serviço gerenciado pelo Spring
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Service;
 //importa a anotaçao para gerenciar transaçoes no banco de dados (garante atomicidade na operaçao)
 import org.springframework.transaction.annotation.Transactional;
 
+//importa o models.User
+import api_teste.ds.models.User;
 //importa o models.Task
 import api_teste.ds.models.Task;
 //importa a interface do repositorio responsavel pelas operaçoes no banco de dados
