@@ -45,13 +45,18 @@ public class TaskService {
         ));
     }
 
+    public List<Task> findAllByUser(Long userId){
+        List<Task> tasks = this.taskRepository.findByUser_Id(userId);
+        return tasks;
+    }
+
     //metodo para buscar todas as tarefas vinculadas a um determinado usuario
     public List<Task> findByUserId(Long UserId){
         //chama o userService para garantir que o usuario existe no banco (lança exceçao se nao existir)
         this.userService.findById(UserId);
 
         //executa a busca customizada no repositorio filtrando pelo id do usuario
-        List<Task> tasks = this.taskRepository.findByUserId(UserId);
+        List<Task> tasks = this.taskRepository.findByUser_Id(UserId);
 
         //retorna a lista de tarefas
         return tasks;
@@ -64,7 +69,7 @@ public class TaskService {
             User user = this.userService.findById(obj.getUser().getId());
 
             //define o id como null para garantir que o JPA realize uma inserçao(INSERT) e nao uma atualização
-            obj.setId(Id:null);
+            obj.setId(null);
             //associa a entidade user completa e validade a tarefa
             obj.setUser(user);
             //salva a nova tarefa no banco de dados e atualiza 'obj' com o ID gerado
@@ -97,6 +102,11 @@ public class TaskService {
                 //captura execçoes (como violaçoes de chave estrangeira e lança uma mensagem amigavel)
                 throw new RuntimeException("Nao é possivel excluir pois nao ha tarefas relacionadas");
             }
+        }
+
+        public List<Task> findAllByUserId(Long userId) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'findAllByUserId'");
         }
 
     

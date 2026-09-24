@@ -35,7 +35,7 @@ public class UserService {
         Optional<User> user = this.userRepository.findById(Id);
         
         return user.orElseThrow(()-> new RuntimeException(
-            "Usuário não encontrado! Id: " + Id + ", Tipo: " + user.class.getName()
+            "Usuário não encontrado! Id: " + Id + ", Tipo: " + User.class.getName()
         ));
     }
     @Transactional 
@@ -45,7 +45,7 @@ public class UserService {
 
         obj = this.userRepository.save(obj);
 
-        this.taskRepository.saveAll(obj.getClass());
+        this.taskRepository.saveAll(obj.getTasks());
 
         return obj;
     } 

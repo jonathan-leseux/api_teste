@@ -31,7 +31,7 @@ public class UserController {
     @GetMapping ("/{id}") //mapeia requisições HTTP GET na rota "/user/{id}"
     public ResponseEntity<User> findById(@PathVariable Long Id){ //metodo para buscar usuario por id capturado na URL
         User obj=this.userService.findById(Id); //invoca a busca do usuario atraves do ID recebido
-        return ResponseEntity.ok().body(obj) //retorna codigo HTTP 200(pk) com o objeto User no corpo da resposta
+        return ResponseEntity.ok().body(obj); //retorna codigo HTTP 200(pk) com o objeto User no corpo da resposta
     } //fim do metodo FindById
 
     @PostMapping //mapeia requisições HTTP POST na rota base "/user"(criaçao de novo usuario)
@@ -43,14 +43,14 @@ public class UserController {
     }
 
     @PutMapping("/{id}") //mapeia requisiçoes HTTP PUT na rota base "/user/{id}" (atualizaçao do usuario)
-    public ResponseEntity<Void> update(@Validated(UptadeUser.class)@RequestBody User obj, @PathVariable Long id){ //aplica a regra de UpdateUser e recebe ID e JSON
+    public ResponseEntity<Void> update(@Validated(UpdateUser.class)@RequestBody User obj, @PathVariable Long id){ //aplica a regra de UpdateUser e recebe ID e JSON
         obj.setId(id); //garante que o ID do objeto a ser atualizado corresponde ao ID informado pelo parametro da URL
         this.userService.update(obj); //executa a atualizaçao da senha do usuario no banco de dados
         return ResponseEntity.noContent().build(); //retorno codigo HTTP 204(No content) indicando sucesso sem regra sem corpo
     }
 
     @DeleteMapping ("/{id}") //mapeia requisiçoes HTTP DELETE na rota "/user/{id}" (exclusao de usuario)
-    public ResponseEntity<Void>.delete(@PathVariable Long id){ //captura o id da URL a ser deletado
+    public ResponseEntity<Void> delete(@PathVariable Long id){ //captura o id da URL a ser deletado
         this.userService.delete(id); //invoca o metodo de deleçao do serviço
         return ResponseEntity.noContent().build(); //retorna codigo HTTP 204 (no content) confirmando a exclusao
     }
