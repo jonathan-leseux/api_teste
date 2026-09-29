@@ -34,8 +34,8 @@ public class TaskController { //declaraçao de classe pibulica TaskController
         return ResponseEntity.ok().body(obj); //retorna HTTP 200(ok)
     } //fim do metodo findById
 
-    @GetMapping("/user/{userid}")
-    public ResponseEntity<List<Task>> findAllByUserId(@PathVariable Long userId){
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Task>> findAllByUserId(@PathVariable Long userId) {
         List<Task> objs = this.taskService.findAllByUserId(userId);
         return ResponseEntity.ok().body(objs);
     }
@@ -48,7 +48,7 @@ public class TaskController { //declaraçao de classe pibulica TaskController
         return ResponseEntity.created(url).build();
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update(@Valid @RequestBody Task obj, @PathVariable Long id){
         obj.setId(id);
         this.taskService.update(obj);

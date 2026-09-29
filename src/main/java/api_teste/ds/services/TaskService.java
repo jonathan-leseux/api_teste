@@ -103,12 +103,10 @@ public class TaskService {
                 throw new RuntimeException("Nao é possivel excluir pois nao ha tarefas relacionadas");
             }
         }
-
-        public List<Task> findAllByUserId(Long userId) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'findAllByUserId'");
-        }
-
+        // Troque o método lá do final por este:
+        public List<Task> findAllByUserId(Long userid) {
+            return findByUserId(userid);
+}
     
 }
 
