@@ -52,4 +52,6 @@ function show(task){
         }
     
     }
+    show(data);
 }
+getAPI(url);
